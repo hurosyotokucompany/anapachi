@@ -13,7 +13,7 @@ public class HomeSceneManager : MonoBehaviour
     public static int selectedvalue;
 
     //afjlkjflkaj
-    //slkjflsjflj
+    
 
     void Start()
     {
