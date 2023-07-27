@@ -13,7 +13,7 @@ class Ball : MonoBehaviour
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = GetComponent<Rigidbody>();
         // 右斜め45度に進む
-        myRigidbody.velocity = new Vector3(speed / 2f, -2f * speed, 0f);
+        myRigidbody.velocity = new Vector3(speed * 2f, 2f * speed, 0f);
     }
 
 }
