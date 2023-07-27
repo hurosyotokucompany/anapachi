@@ -40,7 +40,7 @@ public class TextManager : MonoBehaviour
             GameClearText.SetActive(true);
             target.SetActive(false);
             HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=1;
-            Debug.Log(HomeSceneManager.Stagelist.Sum());
+            // Debug.Log(HomeSceneManager.Stagelist.Sum());
         }
         
     }
