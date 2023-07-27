@@ -1,39 +1,38 @@
+// using System.Threading.Tasks.Dataflow;
+using UnityEngine;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
+//using System.Numerics;
+//using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
 
 class Player : MonoBehaviour
 {
+    private Vector2 basepoint;
+    void Update(){ 
+        //以下はタッチしてpaddleを動かすためのコード
+       if (Input.touchCount > 0)
+        {
+            //最初にタッチした時の位置情報取得
+            if (Input.touches[0].phase == TouchPhase.Began)
+            {
+                basepoint = Input.touches[0].position;
+            }
+            //指の初期位置からx方向に動かした分だけ、paddleがx方向に動く
+            if (Input.touches[0].phase == TouchPhase.Moved)
+            {
+                Vector2 currentPosition = Input.touches[0].position;
+                Vector2 deltaPosition = currentPosition - basepoint;
+                transform.position += new Vector3(deltaPosition.x/100,0, 0);
+                basepoint = Input.touches[0].position;
+            }
+        }
+    }
+    
 
-    // private Vector2 touchStartPos;   // タッチが開始した位置
-    // private Vector2 paddleStartPos;  // 棒の初期位置
-    // public float paddleSpeed = 1.0f; // 棒の移動速度
-
-    // void Start()
-    // {
-    //     paddleStartPos = transform.position;
-    // }
-
-    // void Update()
-    // {
-    //     if (Input.touchCount > 0)
-    //     {
-    //         Touch touch = Input.GetTouch(0); // 最初のタッチのみを処理する
-
-    //         if (touch.phase == TouchPhase.Began)
-    //         {
-    //             touchStartPos = touch.position;
-    //         }
-    //         else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-    //         {
-    //             // タッチの移動量に応じて棒の位置を更新する
-    //             float touchDelta = (touch.position.x - touchStartPos.x) / Screen.width;
-    //             Vector2 paddlePos = paddleStartPos + new Vector2(touchDelta * paddleSpeed, 0f);
-    //             transform.position = paddlePos;
-    //         }
-    //     }
-    // }
-
+//以下はボタン処理（消す予定）
     public void leftButtonDown(){
         transform.position += new Vector3(-2,0,0);
     }
