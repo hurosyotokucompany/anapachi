@@ -7,6 +7,8 @@ public class RetryButtonManage : MonoBehaviour
 {
    public void OnClickStartButton()
    {
-    SceneManager.LoadScene("Home");
+      int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+      SceneManager.LoadScene(currentSceneIndex);
+   //  SceneManager.LoadScene("Home");
    }
 }
