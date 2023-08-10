@@ -33,13 +33,6 @@ class Player : MonoBehaviour
     
 
 //以下はボタン処理（消す予定）
-    public void leftButtonDown(){
-        transform.position += new Vector3(-2,0,0);
-    }
-    
-    public void rightButtonDown(){
-        transform.position += new Vector3(2,0,0);
-    }
     public void rotButtonDown(){
         transform.Rotate(0,0,45f);
     }
