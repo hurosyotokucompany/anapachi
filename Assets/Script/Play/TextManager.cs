@@ -45,7 +45,7 @@ public class TextManager : MonoBehaviour
         {
             timer += Time.deltaTime;
             timerText.text = "Time: " + timer.ToString("F2");
-            Debug.Log(timer);
+            // Debug.Log(timer);
         }
 
         if (target.transform.position.y<-15){
@@ -66,7 +66,7 @@ public class TextManager : MonoBehaviour
             GameClearPicture.SetActive(true);
             target.SetActive(false);
             HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//
-            Debug.Log(HomeSceneManager.Stagelist.Sum());
+            
 
             
 
