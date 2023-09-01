@@ -10,7 +10,7 @@ class Ball : MonoBehaviour
 
     void Start()
     {
-        float speed = 20f;
+        float speed = 15f;
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = GetComponent<Rigidbody>();
         // 右斜め45度に進む
