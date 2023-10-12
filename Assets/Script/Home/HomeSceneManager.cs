@@ -1,3 +1,5 @@
+// using System.Numerics;
+// using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +10,19 @@ using UnityEngine.UI;
 
 public class HomeSceneManager : MonoBehaviour
 {
-    [SerializeField] Dropdown ddtmp;
     public static List<int> Stagelist { get; private set; } = new List<int>(new int[100]);
-    public static int selectedvalue;
 
-    private string FirstStageName="初級";
-    private string SecondStageName="中級";
-    private string ThirdStageName="上級";
+    Vector3 startTouchPos;
+    Vector3 endTouchPos;
+
+    float flickValue_x;
+    float flickValue_y;
+    private int StageNumber=1;
+
+    // エラー出さないために残すけど、のちに消します
+    public static int selectedvalue=1;
+
+    [SerializeField] 
 
     void Start()
     {  
@@ -25,30 +33,57 @@ public class HomeSceneManager : MonoBehaviour
             optionlist.Add(Convert.ToString(i + 1));
         }
         //ここまで使わない
-
-        //Stage名が入ったリストを作成。ドロップダウン(ddtmp)に入れる
-        List<string> StageList=new List<string>();
-        StageList.Add(FirstStageName);
-        StageList.Add(SecondStageName);
-        StageList.Add(ThirdStageName);
-
-        ddtmp.AddOptions(StageList);
     }
+
+    void Update()
+    {
+        // if (Input.GetMouseButtonDown(0) == true)
+        // {
+        //     startTouchPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+        // }
+        // if (Input.GetMouseButtonUp(0) == true)
+        // {
+        //     endTouchPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+        //     FlickDirection();
+        //     GetDirection();
+        // }
+    }
+
+    void FlickDirection()
+    {
+        flickValue_x = endTouchPos.x - startTouchPos.x;
+        flickValue_y = endTouchPos.y - startTouchPos.y;
+        Debug.Log("x スワイプ量は" + flickValue_x);
+        Debug.Log("y スワイプ量は" + flickValue_y);
+    }
+
+    // void GetDirection()
+    // {
+    //     if (flickValue_x > 500.0f)
+    //     {
+    //         StageNumber += 1;
+    //         if(StageNumber>10){
+    //             StageNumber=10;
+    //         }
+    //     }
+
+    //     if (flickValue_x < -500.0f)
+    //     {
+    //         StageNumber -= 1;
+    //         if(StageNumber<1){
+    //             StageNumber=1;
+    //         }
+    //     }
+    // }
 
     public void OnClickStartButton()
     {
-        //ddtmpに表示されたステージ名に応じて、移動するシーンを変更。
-        string selectedstr = ddtmp.options[ddtmp.value].text;
-        if (selectedstr==FirstStageName){
+        if (StageNumber==1){
             SceneManager.LoadScene("Play");
-        }else if(selectedstr==SecondStageName){
-            SceneManager.LoadScene("Play2");
-        }else{
-            SceneManager.LoadScene("Play3");
         }
     }
 
-    public void OnClickRecordButton(){
-        SceneManager.LoadScene("Record");
-    }
+    // public void OnClickRecordButton(){
+    //     SceneManager.LoadScene("Record");
+    // }
 }
