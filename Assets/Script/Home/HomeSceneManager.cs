@@ -79,7 +79,7 @@ public class HomeSceneManager : MonoBehaviour
     public void OnClickStartButton()
     {
         if (StageNumber==1){
-            SceneManager.LoadScene("Play");
+            SceneManager.LoadScene("HorrorStage");
         }
     }
 
