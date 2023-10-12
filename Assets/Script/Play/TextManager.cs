@@ -11,14 +11,21 @@ using TMPro;
 public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject target;
+    [SerializeField] GameObject BGM; 
+
+    // ゲームオーバー
     [SerializeField] GameObject GameOverText;
     [SerializeField] GameObject GameOverPicture;
+    [SerializeField] GameObject GameOverSound; 
+
+    // ゲームクリア
     [SerializeField] GameObject RetryButton;
     [SerializeField] GameObject HomeButton;
     [SerializeField] GameObject GameClearText;
     [SerializeField] GameObject GameClearPicture;
     [SerializeField] TextMeshProUGUI timerText; // 経過時間表示用
     [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
+    
 
     private GameObject[] BlockObjects;  //GameObjectにBlockObjectsを格納します
     private float timer; // 時間計測用
@@ -27,13 +34,17 @@ public class TextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       BGM.SetActive(true);
+
        GameOverText.SetActive(false);
        GameOverPicture.SetActive(false);
+       GameOverSound.SetActive(false);
+
        RetryButton.SetActive(false);
        HomeButton.SetActive(false);
        GameClearText.SetActive(false);
-       GameClearPicture.SetActive(false);
-    //    BestRecordText.SetActive(false);
+       GameClearPicture.SetActive(false);     
+    // BestRecordText.SetActive(false);
        timer = 0f; // タイマー初期化
        isGameOver = false;
     }
@@ -53,6 +64,7 @@ public class TextManager : MonoBehaviour
             GameOverPicture.SetActive(true);
             RetryButton.SetActive(true);
             HomeButton.SetActive(true);
+            GameOverSound.SetActive(true);
             isGameOver = true;
         }
         //消えるオブジェクトにBlockタグをつけます。

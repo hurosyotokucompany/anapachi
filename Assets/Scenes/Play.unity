@@ -357,14 +357,14 @@ PrefabInstance:
     - target: {fileID: 1513816726632942876, guid: 55e35a8340ec7884d9262897b689a95e, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 1513816726632942877, guid: 55e35a8340ec7884d9262897b689a95e, type: 3}
       propertyPath: m_RootOrder
       value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1513816726632942877, guid: 55e35a8340ec7884d9262897b689a95e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1513816726632942877, guid: 55e35a8340ec7884d9262897b689a95e, type: 3}
       propertyPath: m_LocalPosition.x
