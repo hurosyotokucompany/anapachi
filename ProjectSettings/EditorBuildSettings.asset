@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Record.unity
     guid: 6be95611df9d240d9bd9d3ce01124744
+  - enabled: 1
+    path: Assets/Scenes/HorrorStage.unity
+    guid: f2e9debb3028af94ea0e3f2756db9807
+  - enabled: 1
+    path: Assets/Scenes/SpinStage.unity
+    guid: 80e002bd981dec447b8e57cdeaa49dee
+  - enabled: 1
+    path: Assets/Scenes/DoubleStage.unity
+    guid: 5de9c04428daae04cb5d9361863eb7ae
   m_configObjects: {}
