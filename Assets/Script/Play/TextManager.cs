@@ -79,9 +79,6 @@ public class TextManager : MonoBehaviour
             target.SetActive(false);
             HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//
             
-
-            
-
             // ベストタイム記録
             string key = "BestTime_" + HomeSceneManager.selectedvalue;
             Debug.Log(key);
