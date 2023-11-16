@@ -1,3 +1,4 @@
+using System.Diagnostics;
 //using System.Threading.Tasks.Dataflow;
 using System;
 using UnityEngine;
@@ -19,19 +20,21 @@ public class StageSelectManager : MonoBehaviour
 
     private bool isMoving = false;
 
+    public static int StageNumber=0;
+
     private void Update()
     {   
-        //ここからはobjectの大きさ変換の話,ステージ１用
-        // オブジェクトの位置を取得
-        Vector3 objectPosition = transform.position;
-        // 位置に基づいてサイズを計算
-        float newSize = 1-(0.2f*Math.Abs(objectPosition.x));
-        // オブジェクトのスケールを変更
-        if (newSize>0){
-        transform.localScale = new Vector3(1.5f*newSize,3.0f*newSize, 1);
-        }else{
-            transform.localScale=new Vector3(0,0,0);
-        }
+        // //ここからはobjectの大きさ変換の話,ステージ１用
+        // // オブジェクトの位置を取得
+        // Vector3 objectPosition = transform.position;
+        // // 位置に基づいてサイズを計算
+        // float newSize = 1-(0.2f*Math.Abs(objectPosition.x));
+        // // オブジェクトのスケールを変更
+        // if (newSize>0){
+        // transform.localScale = new Vector3(1.5f*newSize,3.0f*newSize, 1);
+        // }else{
+        //     transform.localScale=new Vector3(0,0,0);
+        // }
         //ここからはフリック動作の話
         if (isMoving)
         {
@@ -59,13 +62,20 @@ public class StageSelectManager : MonoBehaviour
                         {
                             // Right swipe (move to the previous stage)
                             // Move content to the right
-                            MoveContent(-1);
+                            MoveContent(1);
+                            if (StageNumber<1){
+                                StageNumber=StageNumber+7;
+                            }else{
+                                StageNumber=(StageNumber-1)%8;
+                            }
                         }
                         else
                         {
                             // Left swipe (move to the next stage)
                             // Move content to the left
-                            MoveContent(1);
+                            MoveContent(-1);
+                            StageNumber=(StageNumber+1)%8;
+                            UnityEngine.Debug.Log(StageNumber);
                         }
                     }
                     break;
@@ -76,7 +86,8 @@ public class StageSelectManager : MonoBehaviour
 
     private void MoveContent(int direction)
     {
-        float xOffset = direction * fixedSlideAmount; 
+        float xOffset=360.00f*direction*0.9375f;
+        // float xOffset = direction * fixedSlideAmount; 
         targetPosition = transform.position + new Vector3(xOffset, 0f, 0f);
         startPosition = transform.position;
         slideTimer = 0f;
