@@ -14,7 +14,7 @@ class Player : MonoBehaviour
     private float minX=-10f; // 最小X座標（左壁）
     private float maxX=10f; // 最大X座標（右壁）
 
-    float smoothTime = 0.0001f;  // 補間にかかる時間
+    //float smoothTime = 0.0001f;  // 補間にかかる時間
     Vector3 velocity = Vector3.zero;  // 補間の速度（内部的に使用）
     
     void Update(){ 
