@@ -22,18 +22,17 @@ public class HomeSceneManager : MonoBehaviour
     // エラー出さないために残すけど、のちに消します
     public static int selectedvalue=1;
 
-    [SerializeField] 
 
-    void Start()
-    {  
-        //Playシーンでエラー起こさないために残してるけど、使わないコード
-        List<string> optionlist = new List<string>();
-        for (int i = 0; i < Stagelist.Sum()+ 1; i++)
-        {
-            optionlist.Add(Convert.ToString(i + 1));
-        }
-        //ここまで使わない
-    }
+    // void Start()
+    // {  
+    //     //Playシーンでエラー起こさないために残してるけど、使わないコード
+    //     List<string> optionlist = new List<string>();
+    //     for (int i = 0; i < Stagelist.Sum()+ 1; i++)
+    //     {
+    //         optionlist.Add(Convert.ToString(i + 1));
+    //     }
+    //     //ここまで使わない
+    // }
 
     void Update()
     {
@@ -49,13 +48,13 @@ public class HomeSceneManager : MonoBehaviour
         // }
     }
 
-    void FlickDirection()
-    {
-        flickValue_x = endTouchPos.x - startTouchPos.x;
-        flickValue_y = endTouchPos.y - startTouchPos.y;
-        Debug.Log("x スワイプ量は" + flickValue_x);
-        Debug.Log("y スワイプ量は" + flickValue_y);
-    }
+    // void FlickDirection()
+    // {
+    //     flickValue_x = endTouchPos.x - startTouchPos.x;
+    //     flickValue_y = endTouchPos.y - startTouchPos.y;
+    //     Debug.Log("x スワイプ量は" + flickValue_x);
+    //     Debug.Log("y スワイプ量は" + flickValue_y);
+    // }
 
     // void GetDirection()
     // {
@@ -79,7 +78,7 @@ public class HomeSceneManager : MonoBehaviour
     public void OnClickStartButton()
     {
         if (StageNumber==1){
-            SceneManager.LoadScene("HorrorStage");
+            SceneManager.LoadScene("SpaceStage");
         }
     }
 
