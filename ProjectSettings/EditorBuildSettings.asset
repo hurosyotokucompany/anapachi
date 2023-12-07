@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Play2.unity
     guid: be8dea6c56af8407c8bafb992426ce11
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Play3.unity
     guid: 47150636060f04a34b7754e9830a8076
   - enabled: 1
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DoubleStage.unity
     guid: 5de9c04428daae04cb5d9361863eb7ae
+  - enabled: 1
+    path: Assets/Scenes/SpaceStage.unity
+    guid: 81374284c437a8048ac3fe0bb2900494
   m_configObjects: {}
