@@ -15,8 +15,12 @@ public class BaseSceneManager : MonoBehaviour
     [SerializeField] private GameObject BackGroundImage;
     [SerializeField] private AudioSource StartSound;
     [SerializeField] private AudioSource BGM;
-    [SerializeField] private AudioSource ClearSound;
-    [SerializeField] private AudioSource OverSound;
+    // [SerializeField] private AudioSource ClearSound;
+    // [SerializeField] private AudioSource OverSound;
+    
+    [SerializeField] private GameObject ClearSound;
+    [SerializeField] private GameObject OverSound;
+    
     [SerializeField] private GameObject Blocks;
     [SerializeField] private GameObject Walls;
     [SerializeField] private GameObject Player;
@@ -27,6 +31,7 @@ public class BaseSceneManager : MonoBehaviour
     [SerializeField] private GameObject GameOver;
     [SerializeField] TextMeshProUGUI TimerText; // 経過時間表示用
     [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
+    [SerializeField] private GameObject ClearFall;
 
     private float timer = 0f;
 
@@ -47,6 +52,9 @@ public class BaseSceneManager : MonoBehaviour
         HomeButton.SetActive(false);
         RetryButton.SetActive(false);
         GameOver.SetActive(false);
+        ClearFall.SetActive(false);
+        ClearSound.SetActive(false);
+        OverSound.SetActive(false);
 
         StartCoroutine(StartSequence());
     }
@@ -111,7 +119,7 @@ public class BaseSceneManager : MonoBehaviour
         }
         else if (Blocks.transform.childCount == 0) // Assuming Blocks are children of the Blocks GameObject
         {
-            GameClearSequence();
+            StartCoroutine(GameClearSequence());
         }
     }
 
@@ -120,17 +128,20 @@ public class BaseSceneManager : MonoBehaviour
         GameOver.SetActive(true);
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
-        OverSound.PlayOneShot(OverSound.clip);
+        // OverSound.PlayOneShot(OverSound.clip);
+        BGM.Stop();
+        OverSound.SetActive(true);
 
         Ball.SetActive(false);
     }
 
-    private void GameClearSequence()
+    private IEnumerator GameClearSequence()
     {
         GameClear.SetActive(true);
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
-        ClearSound.PlayOneShot(ClearSound.clip);
+        // ClearSound.PlayOneShot(ClearSound.clip);
+        ClearSound.SetActive(true);
 
         Ball.SetActive(false);
 
@@ -145,6 +156,10 @@ public class BaseSceneManager : MonoBehaviour
             BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
         }
         PlayerPrefs.Save();
+
+        yield return new WaitForSeconds(1);
+        ClearFall.SetActive(true);
+
 
     }
 
