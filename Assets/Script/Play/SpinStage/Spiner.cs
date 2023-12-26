@@ -8,12 +8,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-class Player_spin : MonoBehaviour
+class Spiner : MonoBehaviour
 {
     private Vector2 basepoint;
-    
+    // private int roSpeed = Random.Range(-300, 300);
     void Update(){ 
         float roSpeed = 200f;// 回転速度（度/秒）
+        Debug.Log(roSpeed);
         transform.Rotate(Vector3.forward * roSpeed * Time.deltaTime);
     }
     
