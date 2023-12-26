@@ -145,9 +145,9 @@ public class BaseSceneManager : MonoBehaviour
 
         Ball.SetActive(false);
 
-        HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//  
+        // HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//  
         // ベストタイム記録
-        string key = "BestTime_" + HomeSceneManager.selectedvalue;
+        string key = "BestTime_" + SceneManager.GetActiveScene().name;
         Debug.Log(key);
         if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
         {
