@@ -6,20 +6,39 @@ using System;
 
 public class ThumbnailController : MonoBehaviour
 {
+    public GameObject unlock_second;
+    public GameObject unlock_third;
+    public GameObject unlock_forth;
+    public GameObject unlock_fifth;
+    public GameObject unlock_sixth;
+    public GameObject unlock_seventh;
+    public GameObject unlock_eighth;
+    
 
     private void Update()
     {
-        //ここからはobjectの大きさ変換の話
-        // オブジェクトの位置を取得
-        Vector3 objectPosition = transform.position;
-        // 位置に基づいてサイズを計算
-        float newSize = 1-(0.2f*Math.Abs(objectPosition.x));
-        // オブジェクトのスケールを変更
-        if (newSize>0){
-        transform.localScale = new Vector3(1.0f*newSize,1.0f*newSize, 1);
-        }else{
-            transform.localScale=new Vector3(0,0,0);
-        }
+       if (PlayerPrefs.HasKey("BestTime_SpinStage2")){
+            Destroy(unlock_second);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_third);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_forth);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_fifth);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_sixth);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_seventh);
+       }
+       if (PlayerPrefs.HasKey("BaseScne")){
+            Destroy(unlock_eighth);
+       }
+
     }
 }
 

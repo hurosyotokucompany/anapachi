@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class StageSelectManager : MonoBehaviour
 {
@@ -25,19 +26,20 @@ public class StageSelectManager : MonoBehaviour
 
     private int StageMax=8;
 
+    private string gameId = "5511506"; // Andoroido 5511507
+    private string placementId = "rewardedVideo"; // リワード広告のプレースメントIDを設定
+    void Start()
+    {
+        // Advertisement.Initialize(gameId, true); // テストモードを有効にする場合は true を指定
+
+        // // リワード広告の読み込み
+        // Advertisement.Load(placementId);
+    }
+
+
     private void Update()
     {   
-        // //ここからはobjectの大きさ変換の話,ステージ１用
-        // // オブジェクトの位置を取得
-        // Vector3 objectPosition = transform.position;
-        // // 位置に基づいてサイズを計算
-        // float newSize = 1-(0.2f*Math.Abs(objectPosition.x));
-        // // オブジェクトのスケールを変更
-        // if (newSize>0){
-        // transform.localScale = new Vector3(1.5f*newSize,3.0f*newSize, 1);
-        // }else{
-        //     transform.localScale=new Vector3(0,0,0);
-        // }
+
         //ここからはフリック動作の話
         if (isMoving)
         {
@@ -131,12 +133,50 @@ public class StageSelectManager : MonoBehaviour
     }
     public void OnClickStartButton()
     {
+        //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
-            SceneManager.LoadScene("SpaceStage");
+            SceneManager.LoadScene("SpinStage2");
             }
         else if (StageNumber==2){
             SceneManager.LoadScene("SpaceStage");
         }
     
     }
+
+
+//以下広告の話
+    // public void ShowRewardedAd()
+    // {
+    //     // リワード広告の表示
+    //     if (Advertisement.IsReady(placementId))
+    //     {
+    //         ShowOptions options = new ShowOptions();
+    //         options.resultCallback = HandleShowResult;
+
+    //         Advertisement.Show(placementId, options);
+    //     }
+    //     else
+    //     {
+    //         UnityEngine.Debug.LogWarning("リワード広告が読み込まれていないか、表示できません。");
+    //     }
+    // }
+
+    // private void HandleShowResult(ShowResult result)
+    // {
+    //     switch (result)
+    //     {
+    //         case ShowResult.Finished:
+    //             // リワードを付与する処理をここに追加
+    //             UnityEngine.Debug.Log("リワードを受け取りました。");
+    //             break;
+    //         case ShowResult.Skipped:
+    //             UnityEngine.Debug.Log("広告がスキップされました。");
+    //             break;
+    //         case ShowResult.Failed:
+    //             UnityEngine.Debug.LogError("広告の表示に失敗しました。");
+    //             break;
+    //     }
+    // }
+//ここまで広告の話
+
 }
