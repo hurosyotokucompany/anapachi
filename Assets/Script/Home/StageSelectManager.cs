@@ -27,7 +27,7 @@ public class StageSelectManager : MonoBehaviour
     private int StageMax=8;
 
     private string gameId = "5511506"; // Andoroido 5511507
-    private string placementId = "Rewarded_iOS"; // リワード広告のプレースメントIDを設定
+    private string placementId = "rewardedVideo"; // リワード広告のプレースメントIDを設定
     void Start()
     {
         // Advertisement.Initialize(gameId, true); // テストモードを有効にする場合は true を指定
@@ -133,7 +133,7 @@ public class StageSelectManager : MonoBehaviour
     }
     public void OnClickStartButton()
     {
-        
+        //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
             SceneManager.LoadScene("SpinStage2");
             }
@@ -143,6 +143,8 @@ public class StageSelectManager : MonoBehaviour
     
     }
 
+
+//以下広告の話
     // public void ShowRewardedAd()
     // {
     //     // リワード広告の表示
@@ -175,4 +177,6 @@ public class StageSelectManager : MonoBehaviour
     //             break;
     //     }
     // }
+//ここまで広告の話
+
 }
