@@ -132,7 +132,7 @@ public class StageSelectManager : MonoBehaviour
     public void OnClickStartButton()
     {
         if (StageNumber==1){
-            SceneManager.LoadScene("SpaceStage");
+            SceneManager.LoadScene("NewyearStage");
             }
         else if (StageNumber==2){
             SceneManager.LoadScene("SpaceStage");
