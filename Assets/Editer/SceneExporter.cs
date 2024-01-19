@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -40,4 +41,5 @@ public class SceneExporter : EditorWindow
         }
     }
 }
+#endif
 # endif
