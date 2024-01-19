@@ -26,10 +26,13 @@ public class StageSelectManager : MonoBehaviour
 
     private int StageMax=8;
 
+    AudioSource audioSource;
+
     private string gameId = "5511506"; // Andoroido 5511507
     private string placementId = "rewardedVideo"; // リワード広告のプレースメントIDを設定
     void Start()
     {
+         audioSource = GetComponent<AudioSource>();
         // Advertisement.Initialize(gameId, true); // テストモードを有効にする場合は true を指定
 
         // // リワード広告の読み込み
@@ -133,6 +136,7 @@ public class StageSelectManager : MonoBehaviour
     }
     public void OnClickStartButton()
     {
+        audioSource.PlayOneShot(audioSource.clip);
         //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
             SceneManager.LoadScene("SpinStage2");
