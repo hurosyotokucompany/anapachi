@@ -12,61 +12,49 @@ public class BaseSceneManager_final : MonoBehaviour
 {
     [SerializeField] private GameObject StageImage;
     [SerializeField] private GameObject StageText;
-    
     [SerializeField] private GameObject SilverBackGroundImage;
     [SerializeField] private GameObject GoldBackGroundImage;
 
-    [SerializeField] private AudioSource StartSound;
-    [SerializeField] private AudioSource BGM;
-    // [SerializeField] private AudioSource ClearSound;
-    // [SerializeField] private AudioSource OverSound;
-    
-    [SerializeField] private GameObject ClearSound;
+    [SerializeField] private GameObject StartSound;
+    [SerializeField] private AudioSource BGM;    
     [SerializeField] private GameObject OverSound;
+    [SerializeField] private GameObject HomeButton;
+    [SerializeField] private GameObject RetryButton;
     
     [SerializeField] private GameObject SilverBlocks;
     [SerializeField] private GameObject GoldBlocks;
     [SerializeField] private GameObject Walls;
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Ball;
-    [SerializeField] private GameObject GameClear;
-    [SerializeField] private GameObject HomeButton;
-    [SerializeField] private GameObject RetryButton;
     [SerializeField] private GameObject GameOver;
     [SerializeField] TextMeshProUGUI TimerText; // 経過時間表示用
-    [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
-    [SerializeField] private GameObject ClearFall;
 
     private float timer = 0f;
 
     private void Start()
-    {
-        StageImage.SetActive(true);
-        // StartCoroutine(FadeIn(StageImage, 0.2f));
-        StartCoroutine(FadeIn(StageText, 0.5f));
-        StartCoroutine(FadeIn(SilverBackGroundImage, 0.5f));
-        StartSound.PlayOneShot(StartSound.clip);
-        
+    {   
         TimerText.gameObject.SetActive(false);   
-
         SilverBlocks.SetActive(false);
         GoldBlocks.SetActive(false);
         GoldBackGroundImage.SetActive(false);
-
         Walls.SetActive(false);
         Player.SetActive(false);
         Ball.SetActive(false);
-        GameClear.SetActive(false);
-        HomeButton.SetActive(false);
-        RetryButton.SetActive(false);
         GameOver.SetActive(false);
-        ClearFall.SetActive(false);
-        ClearSound.SetActive(false);
+        RetryButton.SetActive(false);
+        HomeButton.SetActive(false);
         OverSound.SetActive(false);
-
+        
+        SilverBackGroundImage.SetActive(true);
+        StartCoroutine(FadeIn(StageText, 0.5f));
+        StartCoroutine(FadeIn(StageImage, 0.5f));
+        StartSound.SetActive(true);
+        
         StartCoroutine(StartSequence());
     }
 
+    private bool SliverCleared = false;
+    private bool GoldCleared = false;
     private void Update()
     {
         // Update the timer if the game is in play
@@ -78,19 +66,23 @@ public class BaseSceneManager_final : MonoBehaviour
 
         // Check for game over conditions
         if (Ball.transform.position.y < -15)
-        {
+        {  
             GameOverSequence();
-        }
+        }    
         
-        if (SilverBlocks.transform.childCount == 0) // Assuming Blocks are children of the Blocks GameObject
+        if (SilverBlocks.transform.childCount == 0 && !SliverCleared) // Assuming Blocks are children of the Blocks GameObject
         {
+            SliverCleared = true;
+            SilverBlocks.SetActive(false);
             StartCoroutine(GoldStartSequence());
         }
 
-        if (GoldBlocks.transform.childCount == 0) // Assuming Blocks are children of the Blocks GameObject
+        if (GoldBlocks.transform.childCount == 0 && !GoldCleared) // Assuming Blocks are children of the Blocks GameObject
         {
-            GameClearSequence();
-            
+            GoldCleared = true;
+            GoldBlocks.SetActive(false);
+            Debug.Log("gold!");
+            StartCoroutine(GameClearSequence());
         }
 
     }
@@ -121,16 +113,14 @@ public class BaseSceneManager_final : MonoBehaviour
 
     private IEnumerator GoldStartSequence()
     {
-        SilverBackGroundImage.SetActive(false);
+        SilverBackGroundImage.SetActive(false);     
         Ball.SetActive(false);
         StartCoroutine(EnlargeBackgroundImage(GoldBackGroundImage));
 
         // Wait for background image expansion to complete
         yield return new WaitForSeconds(1); // Assuming it takes 2 seconds to expand
 
-        SilverBlocks.SetActive(true);
-        Walls.SetActive(true);
-        Player.SetActive(true);
+        GoldBlocks.SetActive(true);
         
         // Wait for 0.5 seconds then activate the ball
         yield return new WaitForSeconds(1.5f);
@@ -148,42 +138,25 @@ public class BaseSceneManager_final : MonoBehaviour
         // OverSound.PlayOneShot(OverSound.clip);
         BGM.Stop();
         OverSound.SetActive(true);
-
         Ball.SetActive(false);
     }
 
     private IEnumerator GameClearSequence()
     {
-        GameClear.SetActive(true);
-        // HomeButton.SetActive(true);
-        // RetryButton.SetActive(true);
-        // ClearSound.PlayOneShot(ClearSound.clip);
-        ClearSound.SetActive(true);
-
-        Ball.SetActive(false);
-
-        // HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//  
         // ベストタイム記録
-        string key = "BestTime_" + SceneManager.GetActiveScene().name;
-        Debug.Log(key);
-        if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
-        {
-            PlayerPrefs.SetFloat(key, timer);
-            // BestRecordText.SetActive(true); // ベストレコード表示
-            BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
-        }
-        PlayerPrefs.Save();
+        // string key = "BestTime_" + SceneManager.GetActiveScene().name;
+        // Debug.Log(key);
+        // if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
+        // {
+        //     PlayerPrefs.SetFloat(key, timer);
+        // }
+        // PlayerPrefs.Save();
 
-        yield return new WaitForSeconds(1);
-        ClearFall.SetActive(true);
-
-        yield return new WaitForSeconds(1);
-        StartCoroutine(FadeOut(StageImage, 1f));
         Walls.SetActive(false);
         Player.SetActive(false);
         Ball.SetActive(false);
-
-        SceneManager.LoadScene("AllClear");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Endroll");
 
     }
 
