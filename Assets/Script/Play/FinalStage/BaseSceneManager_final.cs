@@ -26,6 +26,7 @@ public class BaseSceneManager_final : MonoBehaviour
     [SerializeField] private GameObject Walls;
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Ball;
+    [SerializeField] private GameObject GoldBall;
     [SerializeField] private GameObject GameOver;
     [SerializeField] TextMeshProUGUI TimerText; // 経過時間表示用
 
@@ -37,19 +38,25 @@ public class BaseSceneManager_final : MonoBehaviour
         SilverBlocks.SetActive(false);
         GoldBlocks.SetActive(false);
         GoldBackGroundImage.SetActive(false);
+        SilverBackGroundImage.SetActive(false);
         Walls.SetActive(false);
         Player.SetActive(false);
+
         Ball.SetActive(false);
+        GoldBall.SetActive(false);
+
         GameOver.SetActive(false);
         RetryButton.SetActive(false);
         HomeButton.SetActive(false);
         OverSound.SetActive(false);
+        StartSound.SetActive(false);
         
-        SilverBackGroundImage.SetActive(true);
-        StartCoroutine(FadeIn(StageText, 0.5f));
-        StartCoroutine(FadeIn(StageImage, 0.5f));
-        StartSound.SetActive(true);
+        StageText.SetActive(false);
+        StageImage.SetActive(false);
         
+        
+        StartCoroutine(FadeIn(StageImage, 1f));
+
         StartCoroutine(StartSequence());
     }
 
@@ -65,7 +72,7 @@ public class BaseSceneManager_final : MonoBehaviour
         }
 
         // Check for game over conditions
-        if (Ball.transform.position.y < -15)
+        if (Ball.transform.position.y < -15 | GoldBall.transform.position.y < -15 )
         {  
             GameOverSequence();
         }    
@@ -81,7 +88,6 @@ public class BaseSceneManager_final : MonoBehaviour
         {
             GoldCleared = true;
             GoldBlocks.SetActive(false);
-            Debug.Log("gold!");
             StartCoroutine(GameClearSequence());
         }
 
@@ -90,23 +96,28 @@ public class BaseSceneManager_final : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
-        yield return new WaitForSeconds(4f);
-        StartCoroutine(FadeOut(StageImage, 0.5f));
+        yield return new WaitForSeconds(1.5f);
+        StartSound.SetActive(true);
+        StartCoroutine(FadeIn(StageText, 1.5f));
+        
+        yield return new WaitForSeconds(3.5f);
         StartCoroutine(FadeOut(StageText, 0.5f));
+        StartCoroutine(FadeOut(StageImage, 0.5f));
 
         // Start BGM and expand the background image
         BGM.Play();
+        SilverBackGroundImage.SetActive(true);
         StartCoroutine(EnlargeBackgroundImage(SilverBackGroundImage));
 
         // Wait for background image expansion to complete
-        yield return new WaitForSeconds(1); // Assuming it takes 2 seconds to expand
+        yield return new WaitForSeconds(1.5f); // Assuming it takes 2 seconds to expand
 
         SilverBlocks.SetActive(true);
         Walls.SetActive(true);
         Player.SetActive(true);
         
         // Wait for 0.5 seconds then activate the ball
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         Ball.SetActive(true);
         TimerText.gameObject.SetActive(true);
     }
@@ -114,7 +125,6 @@ public class BaseSceneManager_final : MonoBehaviour
     private IEnumerator GoldStartSequence()
     {
         SilverBackGroundImage.SetActive(false);     
-        Ball.SetActive(false);
         StartCoroutine(EnlargeBackgroundImage(GoldBackGroundImage));
 
         // Wait for background image expansion to complete
@@ -122,10 +132,8 @@ public class BaseSceneManager_final : MonoBehaviour
 
         GoldBlocks.SetActive(true);
         
-        // Wait for 0.5 seconds then activate the ball
         yield return new WaitForSeconds(1.5f);
-        Ball.SetActive(true);
-        TimerText.gameObject.SetActive(true);
+        GoldBall.SetActive(true);
 
     }
 
@@ -139,23 +147,26 @@ public class BaseSceneManager_final : MonoBehaviour
         BGM.Stop();
         OverSound.SetActive(true);
         Ball.SetActive(false);
+        GoldBall.SetActive(false);
     }
 
     private IEnumerator GameClearSequence()
     {
         // ベストタイム記録
-        // string key = "BestTime_" + SceneManager.GetActiveScene().name;
-        // Debug.Log(key);
-        // if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
-        // {
-        //     PlayerPrefs.SetFloat(key, timer);
-        // }
-        // PlayerPrefs.Save();
+        string key = "BestTime_" + SceneManager.GetActiveScene().name;
+        Debug.Log(key);
+        if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
+        {
+            PlayerPrefs.SetFloat(key, timer);
+        }
+        PlayerPrefs.Save();
 
+        yield return new WaitForSeconds(1);
         Walls.SetActive(false);
         Player.SetActive(false);
         Ball.SetActive(false);
-        yield return new WaitForSeconds(1);
+        BGM.Stop();
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Endroll");
 
     }
@@ -163,7 +174,7 @@ public class BaseSceneManager_final : MonoBehaviour
     private IEnumerator EnlargeBackgroundImage(GameObject BackGroundImage)
     {
         BackGroundImage.SetActive(true);
-        float duration = 0.5f;
+        float duration = 1f;
         float currentTime = 0f;
         Vector3 startSize = BackGroundImage.transform.localScale; // initial scale before enlargement
         Vector3 endSize = startSize * 3/2; // target scale for full screen
@@ -179,7 +190,7 @@ public class BaseSceneManager_final : MonoBehaviour
 
     private IEnumerator FadeIn(GameObject target, float duration)
     {
-        // target.SetActive(true);
+        target.SetActive(true);
         CanvasGroup canvasGroup = target.GetComponent<CanvasGroup>();
         if (canvasGroup != null)
         {
