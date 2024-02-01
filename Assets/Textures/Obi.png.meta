@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 12787638449649a4681d8678388387ac
+guid: 0c51d7effef474d238f3deb4880f9615
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7253652341725546674
-    second: space_0
+      213: 1653921576226654029
+    second: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2024-01-30 22.46.17_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +123,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: tvOS
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: space_0
+      name: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2024-01-30 22.46.17_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 127
-        height: 144
+        width: 1223
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b84bb09f562aa460800000000000000
-      internalID: 7253652341725546674
+      spriteID: d47085529e8e3f610800000000000000
+      internalID: 1653921576226654029
       vertices: []
       indices: 
       edges: []
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      space_0: 7253652341725546674
+      "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8 2024-01-30 22.46.17_0": 1653921576226654029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

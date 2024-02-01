@@ -25,14 +25,15 @@ public class StageSelectManager : MonoBehaviour
     private int StageNumber=1;
 
     private int StageMax=8;
-
+     public AudioClip swipeSound;
+     public AudioClip click;
     AudioSource audioSource;
 
     private string gameId = "5511506"; // Andoroido 5511507
     private string placementId = "rewardedVideo"; // リワード広告のプレースメントIDを設定
     void Start()
     {
-         audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         // Advertisement.Initialize(gameId, true); // テストモードを有効にする場合は true を指定
 
         // // リワード広告の読み込み
@@ -101,6 +102,11 @@ public class StageSelectManager : MonoBehaviour
 
     private void MoveContent(int direction)
     {
+        // スワイプ効果音を再生
+        if (swipeSound != null)
+        {
+            audioSource.PlayOneShot(swipeSound);
+        }
         // オブジェクトの名前を指定して取得
         GameObject targetObject = GameObject.Find("Canvas");
         // オブジェクトのTransformコンポーネントを取得
@@ -112,7 +118,7 @@ public class StageSelectManager : MonoBehaviour
         // 取得したx方向のスケールの利用
         UnityEngine.Debug.Log("x方向のスケール: " + scaleX);
 
-        float SamneScale=3.9f;
+        float SamneScale=3.5f;
         int SamneBet=120;
         float xOffset=SamneBet*SamneScale*direction*scaleX;
         // float xOffset = direction * fixedSlideAmount; 
@@ -136,10 +142,10 @@ public class StageSelectManager : MonoBehaviour
     }
     public void OnClickStartButton()
     {
-        audioSource.PlayOneShot(audioSource.clip);
+        audioSource.PlayOneShot(click);
         //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
-            SceneManager.LoadScene("SpinStage2");
+            SceneManager.LoadScene("SpinStage");
             }
         else if (StageNumber==2){
             SceneManager.LoadScene("SpaceStage");

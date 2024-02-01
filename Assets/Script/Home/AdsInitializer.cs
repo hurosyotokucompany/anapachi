@@ -11,6 +11,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     void Awake()
     {
         InitializeAds();
+        OnInitializationComplete();
+        
     }
  
     public void InitializeAds()
