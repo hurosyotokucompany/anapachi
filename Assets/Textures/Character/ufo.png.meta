@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 667a50df8db1f4941a2099fcfa85fb10
+guid: e1890c3af31eb6f4d8d55535f92b45a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6301429047446442448
-    second: gold_0
+      213: 2676159555221356526
+    second: ufo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gold_0
+      name: ufo_0
       rect:
         serializedVersion: 2
-        x: 19
+        x: 0
         y: 0
-        width: 574
-        height: 1107
+        width: 190
+        height: 119
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03e60a1faa3dc88a0800000000000000
-      internalID: -6301429047446442448
+      spriteID: eef7c33cfe0a32520800000000000000
+      internalID: 2676159555221356526
       vertices: []
       indices: 
       edges: []
@@ -149,15 +149,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      gold_0: -6301429047446442448
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
