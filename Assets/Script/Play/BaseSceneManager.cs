@@ -20,7 +20,7 @@ public class BaseSceneManager : MonoBehaviour
     
     [SerializeField] private GameObject ClearSound;
     [SerializeField] private GameObject OverSound;
-    
+
     [SerializeField] private GameObject Blocks;
     [SerializeField] private GameObject Walls;
     [SerializeField] private GameObject Player;
