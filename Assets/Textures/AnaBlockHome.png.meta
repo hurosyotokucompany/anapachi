@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dd0dcd22af7817a4fb29340c4b8ea902
+guid: 14ca761e44ac9430f81ef762816490c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7929310626569395261
-    second: over4_0
+      213: 566052957008912699
+    second: AnaBlockHome_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +123,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: tvOS
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: over4_0
+      name: AnaBlockHome_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 291
-        height: 329
+        width: 1031
+        height: 919
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c3e9951ffd65f190800000000000000
-      internalID: -7929310626569395261
+      spriteID: b3163925a260bd700800000000000000
+      internalID: 566052957008912699
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      over4_0: -7929310626569395261
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

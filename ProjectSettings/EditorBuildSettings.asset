@@ -39,3 +39,4 @@ EditorBuildSettings:
     path: Assets/Scenes/SpaceStage.unity
     guid: 81374284c437a8048ac3fe0bb2900494
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

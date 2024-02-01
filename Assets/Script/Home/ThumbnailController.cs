@@ -20,7 +20,7 @@ public class ThumbnailController : MonoBehaviour
        if (PlayerPrefs.HasKey("BestTime_SpinStage2")){
             Destroy(unlock_second);
        }
-       if (PlayerPrefs.HasKey("BaseScne")){
+       if (PlayerPrefs.HasKey("BestTime_SpinStage2")){
             Destroy(unlock_third);
        }
        if (PlayerPrefs.HasKey("BaseScne")){
