@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Niseana_Comment: {fileID: 1058640825}
+  maxnum: 27
 --- !u!1 &858972202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,18 +1549,6 @@ MonoBehaviour:
       - m_Target: {fileID: 57840351}
         m_TargetAssemblyTypeName: StageSelectManager, Assembly-CSharp
         m_MethodName: OnClickStartButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1297440416}
-        m_TargetAssemblyTypeName: RewardedAdsButton, Assembly-CSharp
-        m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

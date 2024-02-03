@@ -39,9 +39,9 @@ public class BaseSceneManager_final : MonoBehaviour
         GoldBlocks.SetActive(false);
         GoldBackGroundImage.SetActive(false);
         SilverBackGroundImage.SetActive(false);
+
         Walls.SetActive(false);
         Player.SetActive(false);
-
         Ball.SetActive(false);
         GoldBall.SetActive(false);
 
@@ -54,9 +54,7 @@ public class BaseSceneManager_final : MonoBehaviour
         StageText.SetActive(false);
         StageImage.SetActive(false);
         
-        
         StartCoroutine(FadeIn(StageImage, 1f));
-
         StartCoroutine(StartSequence());
     }
 
@@ -74,7 +72,7 @@ public class BaseSceneManager_final : MonoBehaviour
         // Check for game over conditions
         if (Ball.transform.position.y < -15 | GoldBall.transform.position.y < -15 )
         {  
-            GameOverSequence();
+            StartCoroutine(GameOverSequence());
         }    
         
         if (SilverBlocks.transform.childCount == 0 && !SliverCleared) // Assuming Blocks are children of the Blocks GameObject
@@ -138,16 +136,28 @@ public class BaseSceneManager_final : MonoBehaviour
     }
 
 
-    private void GameOverSequence()
+    private IEnumerator GameOverSequence()
     {
         GameOver.SetActive(true);
+
+        int rnd = Random.Range(1, 101);
+        if(rnd<=33){
+            over1.SetActive(true);
+        }else if(rnd<=66){
+            over2.SetActive(true);
+        }else if(rnd<=99){
+            over3.SetActive(true);
+        }else{
+            over4.SetActive(true);
+        }
+
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
-        // OverSound.PlayOneShot(OverSound.clip);
         BGM.Stop();
-        OverSound.SetActive(true);
         Ball.SetActive(false);
         GoldBall.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        OverSound.SetActive(true);
     }
 
     private IEnumerator GameClearSequence()
