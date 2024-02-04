@@ -92,7 +92,7 @@ public class BaseSceneManager : MonoBehaviour
         float duration = 0.5f;
         float currentTime = 0f;
         Vector3 startSize = BackGroundImage.transform.localScale; // initial scale before enlargement
-        Vector3 endSize = startSize * 3/2; // target scale for full screen
+        Vector3 endSize = startSize * 4/3; // target scale for full screen
 
         while (currentTime < duration)
         {
