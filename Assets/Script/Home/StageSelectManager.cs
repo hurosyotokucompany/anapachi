@@ -24,7 +24,7 @@ public class StageSelectManager : MonoBehaviour
 
     private int StageNumber=1;
 
-    private int StageMax=8;
+    private int StageMax=7;
      public AudioClip swipeSound;
      public AudioClip click;
     AudioSource audioSource;
@@ -145,10 +145,32 @@ public class StageSelectManager : MonoBehaviour
         audioSource.PlayOneShot(click);
         //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
-            SceneManager.LoadScene("SpinStage");
+            SceneManager.LoadScene("BaseStage");
             }
         else if (StageNumber==2){
-            SceneManager.LoadScene("SpaceStage");
+            if (PlayerPrefs.HasKey("BestTime_BaseStage")){
+                SceneManager.LoadScene("SpaceStage");
+            }
+        }else if(StageNumber==3){
+            if (PlayerPrefs.HasKey("BestTime_SpaceStage")){
+                SceneManager.LoadScene("ThunderStage");
+            }
+        }else if(StageNumber==4){
+            if (PlayerPrefs.HasKey("BestTime_ThunderStage")){
+                SceneManager.LoadScene("DoubleStage");
+            }
+        }else if(StageNumber==5){
+            if (PlayerPrefs.HasKey("BestTime_DoubleStage")){
+                SceneManager.LoadScene("SpinStage");
+            }
+        }else if(StageNumber==6){
+            if (PlayerPrefs.HasKey("BestTime_SpinStage")){
+                SceneManager.LoadScene("HorrorStage");
+            }
+        }else if(StageNumber==7){
+            if (PlayerPrefs.HasKey("BestTime_HorrorStage")){
+                SceneManager.LoadScene("FinalStage");
+            }
         }
     
     }
