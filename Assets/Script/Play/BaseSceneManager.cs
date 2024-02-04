@@ -33,6 +33,12 @@ public class BaseSceneManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
     [SerializeField] private GameObject ClearFall;
 
+    
+    [SerializeField] private GameObject Over1;
+    [SerializeField] private GameObject Over2;
+    [SerializeField] private GameObject Over3;
+    [SerializeField] private GameObject Over4;
+
     private float timer = 0f;
 
     private void Start()
@@ -56,6 +62,7 @@ public class BaseSceneManager : MonoBehaviour
         ClearSound.SetActive(false);
         OverSound.SetActive(false);
 
+
         StartCoroutine(StartSequence());
     }
 
@@ -72,9 +79,6 @@ public class BaseSceneManager : MonoBehaviour
         // Wait for background image expansion to complete
         yield return new WaitForSeconds(1); // Assuming it takes 2 seconds to expand
 
-        // Activate game objects
-        // StartCoroutine(FadeOut(Blocks, 0.8f));
-        // StartCoroutine(FadeOut(Walls, 0.5f));
         Blocks.SetActive(true);
         Walls.SetActive(true);
         Player.SetActive(true);
@@ -103,6 +107,9 @@ public class BaseSceneManager : MonoBehaviour
         }
     }
 
+
+    private bool Cleared = false;
+    private bool Overed = false;
     private void Update()
     {
         // Update the timer if the game is in play
@@ -113,28 +120,45 @@ public class BaseSceneManager : MonoBehaviour
         }
 
         // Check for game over conditions
-        if (Ball.transform.position.y < -15)
+        if (Ball.transform.position.y < -15 && !Overed)
         {
-            GameOverSequence();
+            Overed = true;
+            StartCoroutine(GameOverSequence());
         }
-        else if (Blocks.transform.childCount == 0) // Assuming Blocks are children of the Blocks GameObject
+        else if (Blocks.transform.childCount == 0 && !Cleared) // Assuming Blocks are children of the Blocks GameObject
         {
+            Cleared = true;
             StartCoroutine(GameClearSequence());
         }
     }
 
-    private void GameOverSequence()
+    private IEnumerator GameOverSequence()
     {
         GameOver.SetActive(true);
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
-        // OverSound.PlayOneShot(OverSound.clip);
         BGM.Stop();
-        OverSound.SetActive(true);
 
         Ball.SetActive(false);
-    }
+        Walls.SetActive(false);
+        BackGroundImage.SetActive(false);
+        Player.SetActive(false);
+        TimerText.gameObject.SetActive(false);
 
+        int rnd = UnityEngine.Random.Range(1, 101);
+        if(rnd<=33){
+            StartCoroutine(FadeIn(Over1, 1f));
+        }else if(rnd<=66){
+            StartCoroutine(FadeIn(Over2, 1f));
+        }else if(rnd<=99){
+            StartCoroutine(FadeIn(Over4, 1f));
+        }else{
+            StartCoroutine(FadeIn(Over4, 1f));
+        }
+
+        yield return new WaitForSeconds(1f);
+        OverSound.SetActive(true);
+    }
     private IEnumerator GameClearSequence()
     {
         GameClear.SetActive(true);
@@ -165,7 +189,7 @@ public class BaseSceneManager : MonoBehaviour
 
     private IEnumerator FadeIn(GameObject target, float duration)
     {
-        // target.SetActive(true);
+        target.SetActive(true);
         CanvasGroup canvasGroup = target.GetComponent<CanvasGroup>();
         if (canvasGroup != null)
         {
