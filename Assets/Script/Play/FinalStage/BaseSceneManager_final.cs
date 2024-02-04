@@ -140,16 +140,16 @@ public class BaseSceneManager_final : MonoBehaviour
     {
         GameOver.SetActive(true);
 
-        int rnd = Random.Range(1, 101);
-        if(rnd<=33){
-            over1.SetActive(true);
-        }else if(rnd<=66){
-            over2.SetActive(true);
-        }else if(rnd<=99){
-            over3.SetActive(true);
-        }else{
-            over4.SetActive(true);
-        }
+        // int rnd = Random.Range(1, 101);
+        // if(rnd<=33){
+        //     over1.SetActive(true);
+        // }else if(rnd<=66){
+        //     over2.SetActive(true);
+        // }else if(rnd<=99){
+        //     over3.SetActive(true);
+        // }else{
+        //     over4.SetActive(true);
+        // }
 
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
@@ -187,7 +187,7 @@ public class BaseSceneManager_final : MonoBehaviour
         float duration = 1f;
         float currentTime = 0f;
         Vector3 startSize = BackGroundImage.transform.localScale; // initial scale before enlargement
-        Vector3 endSize = startSize * 3/2; // target scale for full screen
+        Vector3 endSize = startSize * 8/7; // target scale for full screen
 
         while (currentTime < duration)
         {

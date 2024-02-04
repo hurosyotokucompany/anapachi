@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/NewyearStage.unity
     guid: 21c0cf2cb66418643aac6e595f9d03d9
   - enabled: 1
-    path: Assets/Scenes/HorrorStage.unity
+    path: Assets/Scenes/HorrorStage_old.unity
     guid: f2e9debb3028af94ea0e3f2756db9807
   - enabled: 1
     path: Assets/Scenes/SpinStage.unity
