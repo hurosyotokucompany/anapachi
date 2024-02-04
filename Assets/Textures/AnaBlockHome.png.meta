@@ -169,7 +169,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AnaBlockHome_0: 566052957008912699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -7,7 +7,7 @@ using TMPro;
 public class NiseanaComment : MonoBehaviour
 {
     public GameObject Niseana_Comment = null; // Textオブジェクト
-    public int maxnum=27;
+    public int maxnum=32;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class NiseanaComment : MonoBehaviour
         }else if(r==19){
             Comment_text.text="Anasan runs fast.";
         }else if(r==20){
-            Comment_text.text="Anasan serched Dottinoyu.";
+            Comment_text.text="Anasan serched Dottino-yu.";
         }else if(r==21){
             Comment_text.text="Anasan has many friends.";
         }else if(r==22){
@@ -65,11 +65,20 @@ public class NiseanaComment : MonoBehaviour
         }else if(r==25){
             Comment_text.text="Anasan is master of space.";
         }else if(r==26){
-            Comment_text.text="Anasan is master of space.";
+            Comment_text.text="Anasan bought clothes and got a fidget spinner.";
         }else if(r==27){
-            Comment_text.text=$"There are 40 kind of Anasan info. Let's play a lot.";
-        }
-
+            Comment_text.text="Anasan once received a love letter.";
+        }else if(r==28){
+            Comment_text.text="There are 40 kind of Anasan info. Let's play a lot.";
+        }else if(r==29){
+            Comment_text.text="Anasan wears interesting cardigan.'yes-no-cardigan'";
+        }else if(r==30){
+            Comment_text.text="Let's search for 'AnasanGames' on youtube";
+        } else if(r==31){
+            Comment_text.text="Ghost-Anasan is very popular in Asia";
+        } else if(r==32){
+            Comment_text.text="Anasan falls from the sky like a shooting star";
+        } 
         UnityEngine.Debug.Log(r);
     }
 
