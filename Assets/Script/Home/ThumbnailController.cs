@@ -17,26 +17,23 @@ public class ThumbnailController : MonoBehaviour
 
     private void Update()
     {
-       if (PlayerPrefs.HasKey("BestTime_SpinStage2")){
+       if (PlayerPrefs.HasKey("BestTime_BaseStage")){
             Destroy(unlock_second);
        }
-       if (PlayerPrefs.HasKey("BestTime_SpinStage2")){
+       if (PlayerPrefs.HasKey("BestTime_SpaceStage")){
             Destroy(unlock_third);
        }
-       if (PlayerPrefs.HasKey("BaseScne")){
+       if (PlayerPrefs.HasKey("BestTime_ThunderStage")){
             Destroy(unlock_forth);
        }
-       if (PlayerPrefs.HasKey("BaseScne")){
+       if (PlayerPrefs.HasKey("BestTime_DoubleStage")){
             Destroy(unlock_fifth);
        }
-       if (PlayerPrefs.HasKey("BaseScne")){
+       if (PlayerPrefs.HasKey("BestTime_SpinStage")){
             Destroy(unlock_sixth);
        }
-       if (PlayerPrefs.HasKey("BaseScne")){
+       if (PlayerPrefs.HasKey("BestTime_FinalStage")){
             Destroy(unlock_seventh);
-       }
-       if (PlayerPrefs.HasKey("BaseScne")){
-            Destroy(unlock_eighth);
        }
 
     }
