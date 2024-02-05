@@ -162,7 +162,7 @@ public class BaseSceneManager_final : MonoBehaviour
         }else if(rnd<=66){
             StartCoroutine(FadeIn(Over2, 1f));
         }else if(rnd<=99){
-            StartCoroutine(FadeIn(Over4, 1f));
+            StartCoroutine(FadeIn(Over3, 1f));
         }else{
             StartCoroutine(FadeIn(Over4, 1f));
         }
@@ -198,7 +198,7 @@ public class BaseSceneManager_final : MonoBehaviour
         float duration = 1f;
         float currentTime = 0f;
         Vector3 startSize = BackGroundImage.transform.localScale; // initial scale before enlargement
-        Vector3 endSize = startSize * 8/7; // target scale for full screen
+        Vector3 endSize = startSize * 4/3; // target scale for full screen
 
         while (currentTime < duration)
         {

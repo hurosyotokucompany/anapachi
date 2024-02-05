@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: dd0dcd22af7817a4fb29340c4b8ea902
+guid: c884c6c392266404fb06f081fd7148c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7929310626569395261
-    second: over4_0
+      213: -1254494129084212573
+    second: start_first_0
+  - first:
+      213: -8305084733897063605
+    second: start_first_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,30 +125,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: over4_0
+      name: start_first_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 291
-        height: 329
+        y: 509
+        width: 441
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +143,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c3e9951ffd65f190800000000000000
-      internalID: -7929310626569395261
+      spriteID: 3aa5f177c34279ee0800000000000000
+      internalID: -1254494129084212573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: start_first_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 437
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b43cb8ecf696ebc80800000000000000
+      internalID: -8305084733897063605
       vertices: []
       indices: 
       edges: []
@@ -170,7 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      over4_0: -7929310626569395261
+      start_first_0: -1254494129084212573
+      start_first_1: -8305084733897063605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
