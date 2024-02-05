@@ -8,16 +8,14 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class BaseSceneManager : MonoBehaviour
+public class BaseSceneManager_Double2 : MonoBehaviour
 {
     [SerializeField] private GameObject StageImage;
     [SerializeField] private GameObject StageText;
     [SerializeField] private GameObject BackGroundImage;
     [SerializeField] private AudioSource StartSound;
     [SerializeField] private AudioSource BGM;
-    // [SerializeField] private AudioSource ClearSound;
-    // [SerializeField] private AudioSource OverSound;
-    
+
     [SerializeField] private GameObject ClearSound;
     [SerializeField] private GameObject OverSound;
 
@@ -25,6 +23,7 @@ public class BaseSceneManager : MonoBehaviour
     [SerializeField] private GameObject Walls;
     [SerializeField] private GameObject Player;
     [SerializeField] private GameObject Ball;
+    [SerializeField] private GameObject Ball2;
     [SerializeField] private GameObject GameClear;
     [SerializeField] private GameObject HomeButton;
     [SerializeField] private GameObject RetryButton;
@@ -54,6 +53,7 @@ public class BaseSceneManager : MonoBehaviour
         Walls.SetActive(false);
         Player.SetActive(false);
         Ball.SetActive(false);
+        Ball2.SetActive(false);
         GameClear.SetActive(false);
         HomeButton.SetActive(false);
         RetryButton.SetActive(false);
@@ -68,7 +68,9 @@ public class BaseSceneManager : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.2f);
+        StartSound.PlayOneShot(StartSound.clip);
+        yield return new WaitForSeconds(2.8f);
         StartCoroutine(FadeOut(StageImage, 0.5f));
         StartCoroutine(FadeOut(StageText, 0.5f));
 
@@ -86,6 +88,7 @@ public class BaseSceneManager : MonoBehaviour
         // Wait for 0.5 seconds then activate the ball
         yield return new WaitForSeconds(1.5f);
         Ball.SetActive(true);
+        Ball2.SetActive(true);
         TimerText.gameObject.SetActive(true);
     }
 
@@ -120,7 +123,7 @@ public class BaseSceneManager : MonoBehaviour
         }
 
         // Check for game over conditions
-        if (Ball.transform.position.y < -15 && !Overed)
+        if ((Ball.transform.position.y < -15 | Ball2.transform.position.y < -15) && !Overed)
         {
             Overed = true;
             StartCoroutine(GameOverSequence());
@@ -140,6 +143,7 @@ public class BaseSceneManager : MonoBehaviour
         BGM.Stop();
 
         Ball.SetActive(false);
+        Ball2.SetActive(false);
         Walls.SetActive(false);
         BackGroundImage.SetActive(false);
         Player.SetActive(false);
@@ -147,13 +151,13 @@ public class BaseSceneManager : MonoBehaviour
 
         int rnd = UnityEngine.Random.Range(1, 101);
         if(rnd<=33){
-            StartCoroutine(FadeIn(Over1, 0.5f));
+            StartCoroutine(FadeIn(Over1, 1f));
         }else if(rnd<=66){
-            StartCoroutine(FadeIn(Over2, 0.5f));
+            StartCoroutine(FadeIn(Over2, 1f));
         }else if(rnd<=99){
-            StartCoroutine(FadeIn(Over3, 0.5f));
+            StartCoroutine(FadeIn(Over3, 1f));
         }else{
-            StartCoroutine(FadeIn(Over4, 0.5f));
+            StartCoroutine(FadeIn(Over4, 1f));
         }
 
         yield return new WaitForSeconds(1f);
@@ -168,6 +172,7 @@ public class BaseSceneManager : MonoBehaviour
         ClearSound.SetActive(true);
 
         Ball.SetActive(false);
+        Ball2.SetActive(false);
 
         // HomeSceneManager.Stagelist[HomeSceneManager.selectedvalue]=SceneManager.GetActiveScene().buildIndex;//  
         // ベストタイム記録

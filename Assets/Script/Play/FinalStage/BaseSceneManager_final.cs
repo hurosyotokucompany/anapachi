@@ -20,7 +20,6 @@ public class BaseSceneManager_final : MonoBehaviour
     [SerializeField] private GameObject OverSound;
     [SerializeField] private GameObject HomeButton;
     [SerializeField] private GameObject RetryButton;
-    
     [SerializeField] private GameObject SilverBlocks;
     [SerializeField] private GameObject GoldBlocks;
     [SerializeField] private GameObject Walls;
@@ -28,6 +27,10 @@ public class BaseSceneManager_final : MonoBehaviour
     [SerializeField] private GameObject Ball;
     [SerializeField] private GameObject GoldBall;
     [SerializeField] private GameObject GameOver;
+    [SerializeField] private GameObject Over1;
+    [SerializeField] private GameObject Over2;
+    [SerializeField] private GameObject Over3;
+    [SerializeField] private GameObject Over4;
     [SerializeField] TextMeshProUGUI TimerText; // 経過時間表示用
 
     private float timer = 0f;
@@ -60,6 +63,7 @@ public class BaseSceneManager_final : MonoBehaviour
 
     private bool SliverCleared = false;
     private bool GoldCleared = false;
+    private bool Overed = false;
     private void Update()
     {
         // Update the timer if the game is in play
@@ -70,8 +74,9 @@ public class BaseSceneManager_final : MonoBehaviour
         }
 
         // Check for game over conditions
-        if (Ball.transform.position.y < -15 | GoldBall.transform.position.y < -15 )
+        if ((Ball.transform.position.y < -15 | GoldBall.transform.position.y < -15 )&& !Overed )
         {  
+            Overed = true;
             StartCoroutine(GameOverSequence());
         }    
         
@@ -139,24 +144,30 @@ public class BaseSceneManager_final : MonoBehaviour
     private IEnumerator GameOverSequence()
     {
         GameOver.SetActive(true);
-
-        // int rnd = Random.Range(1, 101);
-        // if(rnd<=33){
-        //     over1.SetActive(true);
-        // }else if(rnd<=66){
-        //     over2.SetActive(true);
-        // }else if(rnd<=99){
-        //     over3.SetActive(true);
-        // }else{
-        //     over4.SetActive(true);
-        // }
-
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
         BGM.Stop();
+
         Ball.SetActive(false);
         GoldBall.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        Walls.SetActive(false);
+        SilverBackGroundImage.SetActive(false);
+        GoldBackGroundImage.SetActive(false);
+        Player.SetActive(false);
+        TimerText.gameObject.SetActive(false);
+
+        int rnd = UnityEngine.Random.Range(1, 101);
+        if(rnd<=33){
+            StartCoroutine(FadeIn(Over1, 1f));
+        }else if(rnd<=66){
+            StartCoroutine(FadeIn(Over2, 1f));
+        }else if(rnd<=99){
+            StartCoroutine(FadeIn(Over3, 1f));
+        }else{
+            StartCoroutine(FadeIn(Over4, 1f));
+        }
+
+        yield return new WaitForSeconds(1f);
         OverSound.SetActive(true);
     }
 
@@ -187,7 +198,7 @@ public class BaseSceneManager_final : MonoBehaviour
         float duration = 1f;
         float currentTime = 0f;
         Vector3 startSize = BackGroundImage.transform.localScale; // initial scale before enlargement
-        Vector3 endSize = startSize * 8/7; // target scale for full screen
+        Vector3 endSize = startSize * 4/3; // target scale for full screen
 
         while (currentTime < duration)
         {
