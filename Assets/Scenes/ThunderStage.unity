@@ -3424,6 +3424,10 @@ MonoBehaviour:
   TimerText: {fileID: 236275647}
   BestRecordText: {fileID: 127926192}
   ClearFall: {fileID: 1292452731}
+  Over1: {fileID: 0}
+  Over2: {fileID: 0}
+  Over3: {fileID: 0}
+  Over4: {fileID: 0}
 --- !u!224 &1484740980 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5467481087943385659, guid: b19f0b618a2a14eb882e3d635dd00f1e, type: 3}
@@ -3755,7 +3759,7 @@ SpriteRenderer:
   m_Size: {x: 3.37, y: 6.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1728389945
