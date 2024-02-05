@@ -147,13 +147,13 @@ public class BaseSceneManager : MonoBehaviour
 
         int rnd = UnityEngine.Random.Range(1, 101);
         if(rnd<=33){
-            StartCoroutine(FadeIn(Over1, 1f));
+            StartCoroutine(FadeIn(Over1, 0.5f));
         }else if(rnd<=66){
-            StartCoroutine(FadeIn(Over2, 1f));
+            StartCoroutine(FadeIn(Over2, 0.5f));
         }else if(rnd<=99){
-            StartCoroutine(FadeIn(Over3, 1f));
+            StartCoroutine(FadeIn(Over3, 0.5f));
         }else{
-            StartCoroutine(FadeIn(Over4, 1f));
+            StartCoroutine(FadeIn(Over4, 0.5f));
         }
 
         yield return new WaitForSeconds(1f);
@@ -180,6 +180,7 @@ public class BaseSceneManager : MonoBehaviour
             BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
         }
         PlayerPrefs.Save();
+        BGM.Stop();
 
         yield return new WaitForSeconds(1);
         ClearFall.SetActive(true);

@@ -185,6 +185,7 @@ public class BaseSceneManager_Double2 : MonoBehaviour
             BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
         }
         PlayerPrefs.Save();
+        BGM.Stop();
 
         yield return new WaitForSeconds(1);
         ClearFall.SetActive(true);
