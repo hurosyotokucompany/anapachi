@@ -18,35 +18,38 @@ EditorBuildSettings:
     path: Assets/Scenes/Play3.unity
     guid: 47150636060f04a34b7754e9830a8076
   - enabled: 1
+    path: Assets/Scenes/BaseStage.unity
+    guid: ed5609d874ff6ed4b8423095d49f5626
+  - enabled: 1
     path: Assets/Scenes/Record.unity
     guid: 6be95611df9d240d9bd9d3ce01124744
   - enabled: 1
     path: Assets/Scenes/NewyearStage.unity
     guid: 21c0cf2cb66418643aac6e595f9d03d9
-  - enabled: 1
-    path: Assets/Scenes/ThunderStage.unity
+  - enabled: 0
+    path: Assets/Scenes/Thunder.unity
     guid: d5a006a8cc10acb40aae4d3427a96526
   - enabled: 1
     path: Assets/Scenes/HorrorStage_old.unity
     guid: f2e9debb3028af94ea0e3f2756db9807
   - enabled: 1
     path: Assets/Scenes/SpinStage.unity
-    guid: 9c49f078e6f8f884a9c1376140a7d449
+    guid: ca5b377d981582447bcb7111e9f56662
   - enabled: 1
     path: Assets/Scenes/SpinStage.unity
-    guid: 9c49f078e6f8f884a9c1376140a7d449
+    guid: ca5b377d981582447bcb7111e9f56662
   - enabled: 1
     path: Assets/Scenes/DoubleStage.unity
-    guid: 5de9c04428daae04cb5d9361863eb7ae
+    guid: a4c9abb859ad659498d523b447e89c05
   - enabled: 1
     path: Assets/Scenes/HorrorStage.unity
-    guid: bffeb03263157b3468ab47bd69188520
+    guid: ad37f03250b7fc9419727873cfc38772
   - enabled: 1
     path: Assets/Scenes/FinalStage.unity
     guid: d7d38d17f82a6474e911e4b7d39d3055
   - enabled: 1
     path: Assets/Scenes/SpaceStage.unity
-    guid: 81374284c437a8048ac3fe0bb2900494
+    guid: 3605d84775e50a8479d24cc44641e3fa
   - enabled: 1
     path: Assets/Scenes/Endroll.unity
     guid: 314dc2e3c86bdb24eb7df65766fef37d
