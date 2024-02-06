@@ -1457,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1297440416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297440415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6896d4fccaea4cb9ab2d9fc5bc5071c, type: 3}
   m_Name: 
@@ -1579,7 +1579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1388866072
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1593,13 +1593,13 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 96e274162f64645ea9842bc65c476d7a, type: 3}
   m_Resource: {fileID: 8300000, guid: 96e274162f64645ea9842bc65c476d7a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.208
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 217
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
