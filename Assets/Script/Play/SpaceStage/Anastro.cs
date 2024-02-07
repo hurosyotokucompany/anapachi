@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Ball_thunder : MonoBehaviour
+class Anastro : MonoBehaviour
 {
     // ボールの移動の速さを指定する変数
     // public float speed = 30f * (1.00f * ((float)HomeSceneManager.selectedvalue * 0.5f + 0.5f));
     Rigidbody myRigidbody;
-    float speed = 15f;
+    float speed = 2f;
     float minSpeed = 1f;
 
     private Vector3 lastPosition;
@@ -28,7 +28,7 @@ class Ball_thunder : MonoBehaviour
         // Debug.Log(Mathf.Cos(rad));
         // Debug.Log(Mathf.Sin(rad));
         // myRigidbody.velocity = new Vector3(speed* Mathf.Cos(rad), speed* Mathf.Sin(rad), 0f);
-        myRigidbody.velocity = new Vector3(speed, 2*speed, 0f);
+        myRigidbody.velocity = new Vector3(2*speed, speed, 0f);
     }
     void FixedUpdate()
     {

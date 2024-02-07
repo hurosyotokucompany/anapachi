@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class Ball_thunder : MonoBehaviour
+class UFO : MonoBehaviour
 {
     // ボールの移動の速さを指定する変数
     // public float speed = 30f * (1.00f * ((float)HomeSceneManager.selectedvalue * 0.5f + 0.5f));
     Rigidbody myRigidbody;
-    float speed = 15f;
+    float speed = 5f;
     float minSpeed = 1f;
 
     private Vector3 lastPosition;
