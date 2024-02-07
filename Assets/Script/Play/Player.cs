@@ -2,8 +2,8 @@
 using UnityEngine;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-//using System.Numerics;
-//using System.ComponentModel.DataAnnotations.Schema;
+// using System.Numerics;
+// using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,7 +17,7 @@ class Player : MonoBehaviour
     //float smoothTime = 0.0001f;  // 補間にかかる時間
     Vector3 velocity = Vector3.zero;  // 補間の速度（内部的に使用）
     
-    void Update(){ 
+    void FixedUpdate(){ 
         //以下はタッチしてpaddleを動かすためのコード
         
        if (Input.touchCount > 0)
