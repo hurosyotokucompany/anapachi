@@ -67,7 +67,7 @@ class Ghost : MonoBehaviour
         {
             // transform.localScale *= 3; // 現在のスケールを3倍にする
             // StartCoroutine(EnlargeImage());
-            StartCoroutine(ChangeScale(5, 3));
+            StartCoroutine(ChangeScale(4, 3));
             timer = 0f; // タイマーをリセット
         }
     }
