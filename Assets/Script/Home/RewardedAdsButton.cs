@@ -57,7 +57,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         UnityEngine.Debug.Log("S");
         int rnd = Random.Range(1, 11);
         UnityEngine.Debug.Log(rnd);
-        if(rnd>=1){
+        if(rnd>=8){
         // Disable the button:
         _showAdButton.interactable = false;
         // Then show the ad:
