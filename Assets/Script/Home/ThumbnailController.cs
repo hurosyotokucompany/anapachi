@@ -32,7 +32,7 @@ public class ThumbnailController : MonoBehaviour
        if (PlayerPrefs.HasKey("BestTime_SpinStage")){
             Destroy(unlock_sixth);
        }
-       if (PlayerPrefs.HasKey("BestTime_FinalStage")){
+       if (PlayerPrefs.HasKey("BestTime_HorrorStage")){
             Destroy(unlock_seventh);
        }
 
