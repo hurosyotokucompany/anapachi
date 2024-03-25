@@ -8,30 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: e37d76517a28e40369a6f3e1d0c9757c
-  - enabled: 0
-    path: Assets/Scenes/Play.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Play2.unity
-    guid: be8dea6c56af8407c8bafb992426ce11
-  - enabled: 0
-    path: Assets/Scenes/Play3.unity
-    guid: 47150636060f04a34b7754e9830a8076
   - enabled: 1
     path: Assets/Scenes/BaseStage.unity
     guid: ed5609d874ff6ed4b8423095d49f5626
   - enabled: 1
     path: Assets/Scenes/Record.unity
     guid: 6be95611df9d240d9bd9d3ce01124744
-  - enabled: 0
-    path: Assets/Scenes/NewyearStage.unity
-    guid: 21c0cf2cb66418643aac6e595f9d03d9
-  - enabled: 0
-    path: Assets/Scenes/Thunder.unity
-    guid: d5a006a8cc10acb40aae4d3427a96526
-  - enabled: 0
-    path: Assets/Scenes/HorrorStage_old.unity
-    guid: f2e9debb3028af94ea0e3f2756db9807
   - enabled: 1
     path: Assets/Scenes/SpinStage.unity
     guid: ca5b377d981582447bcb7111e9f56662
