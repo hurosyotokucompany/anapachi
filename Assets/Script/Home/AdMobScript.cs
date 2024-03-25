@@ -22,6 +22,17 @@ public class AdMobScript : MonoBehaviour
 #else
     string adUnitId = "unexpected_platform";
 #endif
+
+  if (bannerView != null)
+        {
+            bannerView.Destroy();
+            Debug.Log("ad:バナー広告作成前に既にあるBannerViewを破棄する");
+        }
+        else if (bannerView == null)
+        {
+            Debug.Log("ad:バナー広告作成前にBannerViewは存在しない");
+        }
+
     // Create a 320x50 banner at the bottom of the screen.
     AdSize customAdSize = new AdSize(320, 100);
     this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);

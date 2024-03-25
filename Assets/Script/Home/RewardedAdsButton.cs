@@ -10,7 +10,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
- 
+    
+    public static int rewpoint=0;
     void Awake()
     {   
         // Get the Ad Unit ID for the current platform:
@@ -54,10 +55,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     // Implement a method to execute when the user clicks the button:
     public void ShowAd()
     {
-        UnityEngine.Debug.Log("S");
-        int rnd = Random.Range(1, 11);
-        UnityEngine.Debug.Log(rnd);
-        if(rnd>=8){
+        UnityEngine.Debug.Log(rewpoint);
+        rewpoint += 1;
+        if(rewpoint%5==0){
         // Disable the button:
         _showAdButton.interactable = false;
         // Then show the ad:
