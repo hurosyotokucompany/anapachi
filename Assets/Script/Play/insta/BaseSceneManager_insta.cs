@@ -6,7 +6,6 @@ using TMPro;
 
 public class BaseSceneManager_insta : MonoBehaviour
 {
-    [SerializeField] private GameObject StageImage;
     [SerializeField] private GameObject StageText;
     [SerializeField] private GameObject BackGroundImage;
     [SerializeField] private AudioSource StartSound;
@@ -18,7 +17,7 @@ public class BaseSceneManager_insta : MonoBehaviour
     [SerializeField] private GameObject Ball;
     [SerializeField] private GameObject HomeButton;
     [SerializeField] private GameObject RetryButton;
-    [SerializeField] private GameObject GameOver;
+    [SerializeField] private GameObject GameEnd;
     [SerializeField] TextMeshProUGUI DeflectionCountText; // はじき返した回数表示用
     [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
 
@@ -28,11 +27,12 @@ public class BaseSceneManager_insta : MonoBehaviour
     [SerializeField] private GameObject Over4;
 
     private int deflectionCount = 0;
+    
+    
 
     private void Start()
     {
-        StageImage.SetActive(true);
-        StartCoroutine(FadeIn(StageText, 0.5f));
+        StartCoroutine(Enlarge(StageText, 2.5f, 0.5f));
         StartCoroutine(FadeIn(BackGroundImage, 0.5f));
         StartSound.PlayOneShot(StartSound.clip);
         StartCoroutine(StartSequence());
@@ -43,15 +43,20 @@ public class BaseSceneManager_insta : MonoBehaviour
         Ball.SetActive(false);
         HomeButton.SetActive(false);
         RetryButton.SetActive(false);
-        GameOver.SetActive(false);
+        GameEnd.SetActive(false);
         OverSound.SetActive(false);
+
+        string recordKey = "BestCount_" + SceneManager.GetActiveScene().name;
+        if (PlayerPrefs.HasKey(recordKey))
+        {
+            int BestRecord = PlayerPrefs.GetInt(recordKey);
+            BestRecordText.text = "Best: " + BestRecord.ToString();  
+        }
     }
 
     private IEnumerator StartSequence()
     {
         yield return new WaitForSeconds(1f);
-        StartCoroutine(FadeOut(StageImage, 0.5f));
-        StartCoroutine(FadeOut(StageText, 0.5f));
 
         // BGMを開始し、背景画像を拡大
         BGM.Play();
@@ -85,6 +90,35 @@ public class BaseSceneManager_insta : MonoBehaviour
         }
     }
 
+    private IEnumerator Enlarge(GameObject target, float ratio, float duration)
+    {
+        // GameObject object, 
+        float currentTime = 0f;
+        Vector3 startSize = target.transform.localScale;
+        Vector3 endSize = startSize * ratio;
+
+        CanvasGroup canvasGroup = target.GetComponent<CanvasGroup>();
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float t = currentTime / duration;
+            target.transform.localScale = Vector3.Lerp(startSize, endSize, t);
+
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 1f - (currentTime / duration);
+            }
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0; // 確実にアルファ値を0に設定する
+        target.SetActive(false);
+
+        // FadeIn(target, duration);
+    }
+
      private void Update()
     {
         // ゲームオーバーの条件をチェック
@@ -106,7 +140,7 @@ public class BaseSceneManager_insta : MonoBehaviour
 
     private IEnumerator GameOverSequence()
     {
-        GameOver.SetActive(true);
+        GameEnd.SetActive(true);
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
         BGM.Stop();
@@ -116,6 +150,13 @@ public class BaseSceneManager_insta : MonoBehaviour
         BackGroundImage.SetActive(false);
         Player.SetActive(false);
         DeflectionCountText.gameObject.SetActive(false);
+
+        string recordKey = "BestCount_" + SceneManager.GetActiveScene().name;
+        if (!PlayerPrefs.HasKey(recordKey) || PlayerPrefs.GetInt(recordKey) < deflectionCount)
+        {
+            PlayerPrefs.SetInt(recordKey, deflectionCount);
+            // BestRecordText.text = "Best Record ! " + deflectionCount.ToString("F2");  
+        }
 
         int rnd = UnityEngine.Random.Range(1, 101);
         if (rnd <= 33)
