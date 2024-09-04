@@ -38,5 +38,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Endroll.unity
     guid: 314dc2e3c86bdb24eb7df65766fef37d
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: a01b2bf62f6574d69b62e5efc122ccb5, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 49b8b6fa91f964d7186d821eeaeb7c4e, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 6e3dc507de1ee443eb0ccadf7c707759, type: 2}
   m_UseUCBPForAssetBundles: 0
