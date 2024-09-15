@@ -9,7 +9,7 @@ public class BaseSceneManager_insta : MonoBehaviour
     [SerializeField] private GameObject StageText;
     [SerializeField] private GameObject BackGroundImage;
     [SerializeField] private AudioSource StartSound;
-    [SerializeField] private AudioSource BGM;
+
 
     [SerializeField] private GameObject OverSound;
     [SerializeField] private GameObject Walls;
@@ -21,14 +21,15 @@ public class BaseSceneManager_insta : MonoBehaviour
     [SerializeField] TextMeshProUGUI DeflectionCountText; // はじき返した回数表示用
     [SerializeField] TextMeshProUGUI BestRecordText; // ベストレコード表示用
 
-    [SerializeField] private GameObject Over1;
-    [SerializeField] private GameObject Over2;
-    [SerializeField] private GameObject Over3;
-    [SerializeField] private GameObject Over4;
+    [SerializeField] TextMeshProUGUI BestText; // BestRecord!
+
+    [SerializeField] private GameObject Dark;
+    [SerializeField] private GameObject Light;
+    [SerializeField] TextMeshProUGUI ScoreText;
 
     private int deflectionCount = 0;
-    
-    
+
+
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         StartSound.PlayOneShot(StartSound.clip);
         StartCoroutine(StartSequence());
 
-        DeflectionCountText.gameObject.SetActive(false);   
+        DeflectionCountText.gameObject.SetActive(false);
         Walls.SetActive(false);
         Player.SetActive(false);
         Ball.SetActive(false);
@@ -50,7 +51,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         if (PlayerPrefs.HasKey(recordKey))
         {
             int BestRecord = PlayerPrefs.GetInt(recordKey);
-            BestRecordText.text = "Best: " + BestRecord.ToString();  
+            BestRecordText.text = "Best: " + BestRecord.ToString();
         }
     }
 
@@ -59,7 +60,6 @@ public class BaseSceneManager_insta : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // BGMを開始し、背景画像を拡大
-        BGM.Play();
         StartCoroutine(EnlargeBackgroundImage());
 
         // 背景画像の拡大が完了するのを待つ
@@ -69,7 +69,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         Player.SetActive(true);
 
         // 0.5秒待ってからボールをアクティブにする
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         Ball.SetActive(true);
         DeflectionCountText.gameObject.SetActive(true);
     }
@@ -119,7 +119,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         // FadeIn(target, duration);
     }
 
-     private void Update()
+    private void Update()
     {
         // ゲームオーバーの条件をチェック
         if (Ball.transform.position.y < -15 && !Overed)
@@ -140,10 +140,10 @@ public class BaseSceneManager_insta : MonoBehaviour
 
     private IEnumerator GameOverSequence()
     {
+        yield return new WaitForSeconds(0.5f);
         GameEnd.SetActive(true);
         HomeButton.SetActive(true);
         RetryButton.SetActive(true);
-        BGM.Stop();
 
         Ball.SetActive(false);
         Walls.SetActive(false);
@@ -152,31 +152,25 @@ public class BaseSceneManager_insta : MonoBehaviour
         DeflectionCountText.gameObject.SetActive(false);
 
         string recordKey = "BestCount_" + SceneManager.GetActiveScene().name;
-        if (!PlayerPrefs.HasKey(recordKey) || PlayerPrefs.GetInt(recordKey) < deflectionCount)
+        string recordText = "SCORE:" + deflectionCount.ToString();
+
+        float blinkSpeed = 1f / ((15f+0.5f*deflectionCount)/15f);
+
+        if (!PlayerPrefs.HasKey(recordKey))
         {
             PlayerPrefs.SetInt(recordKey, deflectionCount);
-            // BestRecordText.text = "Best Record ! " + deflectionCount.ToString("F2");  
         }
+        else if (PlayerPrefs.GetInt(recordKey) < deflectionCount)
+        {
+            PlayerPrefs.SetInt(recordKey, deflectionCount);
+            BestText.text = "Best Record!!";
+        }
+        StartCoroutine(Blink(Light, blinkSpeed));
 
-        int rnd = UnityEngine.Random.Range(1, 101);
-        if (rnd <= 33)
-        {
-            StartCoroutine(FadeIn(Over1, 0.5f));
-        }
-        else if (rnd <= 66)
-        {
-            StartCoroutine(FadeIn(Over2, 0.5f));
-        }
-        else if (rnd <= 99)
-        {
-            StartCoroutine(FadeIn(Over3, 0.5f));
-        }
-        else
-        {
-            StartCoroutine(FadeIn(Over4, 0.5f));
-        }
+        ScoreText.text = recordText;
+        Dark.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         OverSound.SetActive(true);
     }
 
@@ -187,7 +181,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         CanvasGroup canvasGroup = target.GetComponent<CanvasGroup>();
         if (canvasGroup != null)
         {
-            
+
             // アルファ値を0（完全に透明）から1（完全に不透明）まで変化させる
             for (float t = 0; t < duration; t += Time.deltaTime)
             {
@@ -222,6 +216,14 @@ public class BaseSceneManager_insta : MonoBehaviour
         }
     }
 
-
+    private IEnumerator Blink(GameObject target, float duration)
+    {
+       
+            while (true)
+            {
+                target.SetActive(!target.activeSelf); 
+                yield return new WaitForSeconds(duration); 
+            }
+    }
 
 }

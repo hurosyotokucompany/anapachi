@@ -175,9 +175,10 @@ public class BaseSceneManager : MonoBehaviour
         Debug.Log(key);
         if (!PlayerPrefs.HasKey(key) || PlayerPrefs.GetFloat(key) > timer)
         {
-            PlayerPrefs.SetFloat(key, timer);
-            // BestRecordText.SetActive(true); // ベストレコード表示
-            BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
+            if(PlayerPrefs.GetFloat(key) > timer){
+                BestRecordText.text = "Best Record ! " + timer.ToString("F2");  
+            }     
+            PlayerPrefs.SetFloat(key, timer);             
         }
         PlayerPrefs.Save();
         BGM.Stop();

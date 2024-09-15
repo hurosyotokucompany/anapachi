@@ -8,9 +8,9 @@ class Ball_insta : MonoBehaviour
     float speed = 15f; // 初期のボール速度
     float minSpeed = 1f;
     private BaseSceneManager_insta sceneManager;
-    float speedIncrement = 1f; // 速度増加量
+    float speedIncrement = 0.5f; // 速度増加量
     int collisionCount = 1; // 衝突回数をカウントする変数
-    int collisionsToSpeedUp = 5; // 加速するための衝突回数
+    int collisionsToSpeedUp = 1; // 加速するための衝突回数
 
     void Start()
     {
