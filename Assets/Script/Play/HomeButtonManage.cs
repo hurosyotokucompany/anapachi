@@ -9,4 +9,11 @@ public class HomeButtonManage : MonoBehaviour
    {
     SceneManager.LoadScene("Home");
    }
+
+   public void OnClickNiseAna()
+   {
+    SceneManager.LoadScene("insta");
+   }
 }
+
+

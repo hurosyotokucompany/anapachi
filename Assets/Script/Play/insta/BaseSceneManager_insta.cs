@@ -35,7 +35,7 @@ public class BaseSceneManager_insta : MonoBehaviour
     {
         StartCoroutine(Enlarge(StageText, 2.5f, 0.5f));
         StartCoroutine(FadeIn(BackGroundImage, 0.5f));
-        StartSound.PlayOneShot(StartSound.clip);
+        // StartSound.PlayOneShot(StartSound.clip);
         StartCoroutine(StartSequence());
 
         DeflectionCountText.gameObject.SetActive(false);

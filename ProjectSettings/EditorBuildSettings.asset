@@ -48,6 +48,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalStage.unity
     guid: d7d38d17f82a6474e911e4b7d39d3055
   - enabled: 1
+    path: Assets/Scenes/insta.unity
+    guid: 1802a18b63265874a85e679fe8ddae77
+  - enabled: 1
     path: Assets/Scenes/SpaceStage.unity
     guid: 3605d84775e50a8479d24cc44641e3fa
   - enabled: 1
