@@ -4,6 +4,7 @@ using UnityEngine;
 
 class Ball_insta : MonoBehaviour
 {
+    [SerializeField] private AudioSource BallSound;
     Rigidbody myRigidbody;
     float speed = 15f; // 初期のボール速度
     float minSpeed = 1f;
@@ -79,6 +80,13 @@ class Ball_insta : MonoBehaviour
                 myRigidbody.velocity = currentDirection * speed; // 新しい速度を設定
 
                 collisionCount = 0; // 衝突回数をリセット
+            }
+
+              // ボールの速度に応じてピッチを調整し、サウンドを再生
+            if (BallSound != null)
+            {
+                BallSound.pitch = speed / 15f; // ピッチを速度に応じて調整
+                BallSound.Play();
             }
 
             // デフレクションカウントを増加させる
