@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca10bcf6254f7574f811fbc2cf4c6946
+guid: 21994ed7165ff584da2ec65099fa424b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8221230847018173314
-    second: nise_dark_0
+      213: -4571828015118065507
+    second: back_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nise_dark_0
+      name: back_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 199
-        height: 196
+        x: 6
+        y: 12
+        width: 67
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 283800db5eda71270800000000000000
-      internalID: 8221230847018173314
+      spriteID: d9065b094aa9d80c0800000000000000
+      internalID: -4571828015118065507
       vertices: []
       indices: 
       edges: []
@@ -156,8 +156,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      nise_dark_0: 8221230847018173314
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
