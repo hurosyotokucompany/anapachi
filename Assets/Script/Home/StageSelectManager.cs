@@ -72,8 +72,8 @@ public class StageSelectManager : MonoBehaviour
                             // Right swipe (move to the previous stage)
                             // Move content to the right
                             
-                            if (StageNumber==1){
-                                StageNumber=1;
+                            if (StageNumber==0){
+                                StageNumber=0;
                             }else{
                                 StageNumber=StageNumber-1;
                                 MoveContent(1);
@@ -146,6 +146,9 @@ public class StageSelectManager : MonoBehaviour
         //RewardedAdsButton.LoadAd();
         if (StageNumber==1){
             SceneManager.LoadScene("BaseStage");
+            }
+        else if (StageNumber==0){
+            SceneManager.LoadSceneAsync("Music");
             }
         else if (StageNumber==2){
             if (PlayerPrefs.HasKey("BestTime_BaseStage")){
