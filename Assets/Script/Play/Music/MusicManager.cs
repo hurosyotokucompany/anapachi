@@ -13,7 +13,7 @@ public class MusicManager : MonoBehaviour
     // シャッフルされたトラック順序
     private List<int> trackOrder;
     // 再生状態を示すフラグ
-    private bool isPlaying = false;
+    public bool isPlaying = false;
 
     // 再生・停止ボタンのアイコンを切り替えるためのGameObject
     [SerializeField] private GameObject playIcon;  // 再生ボタンのアイコン
