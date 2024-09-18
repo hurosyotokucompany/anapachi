@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MusicManager : MonoBehaviour
 {
     // 音楽トラックのリスト
+    public static MusicManager instance;
     private List<AudioSource> audioSources;
     // 現在再生中のトラックのインデックス
     private int currentTrackIndex = 0;
@@ -27,15 +28,29 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI musicNameText;
 
      // ボタンの参照を追加
-       // ボタンの参照を追加
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button pauseButton;
+    [SerializeField] private Button playPauseButton;
     [SerializeField] private Button nextTrackButton;
     [SerializeField] private Button previousTrackButton;
     [SerializeField] private Button returnHomeButton;
+    // [SerializeField] private Button gameButton;
+
+    void Awake()
+    {
+        // シングルトンの実装
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // このゲームオブジェクトをシーン遷移後も保持
+        }
+        else
+        {
+            Destroy(gameObject); // 既にインスタンスが存在する場合は破棄
+            return;
+        }
+    }
 
     void Start()
-    {
+    {   
         // このオブジェクトの子オブジェクトにあるすべてのAudioSourceを取得
         audioSources = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
 
@@ -52,11 +67,9 @@ public class MusicManager : MonoBehaviour
         UpdateMusicName();
 
         // ボタンのイベントを設定
-        if (playButton != null)
-            playButton.onClick.AddListener(PlayPause);
-        
-        if (pauseButton != null)
-            pauseButton.onClick.AddListener(PlayPause);
+        if (playPauseButton != null)
+            playPauseButton.onClick.RemoveAllListeners();
+            playPauseButton.onClick.AddListener(PlayPause);
 
         if (nextTrackButton != null)
             nextTrackButton.onClick.AddListener(NextTrack);
@@ -66,16 +79,16 @@ public class MusicManager : MonoBehaviour
 
         if (returnHomeButton != null)
             returnHomeButton.onClick.AddListener(ReturnToHome);
+
+        // if (gameButton != null)
+        //     gameButton.onClick.AddListener(GoToGameScene);
     }
 
     void OnDestroy()
     {
-        // イベントの解除
-        if (playButton != null)
-            playButton.onClick.RemoveListener(PlayPause);
-
-        if (pauseButton != null)
-            pauseButton.onClick.RemoveListener(PlayPause);
+        
+        if (playPauseButton != null)
+            playPauseButton.onClick.RemoveListener(PlayPause);
 
         if (nextTrackButton != null)
             nextTrackButton.onClick.RemoveListener(NextTrack);
@@ -85,6 +98,81 @@ public class MusicManager : MonoBehaviour
 
         if (returnHomeButton != null)
             returnHomeButton.onClick.RemoveListener(ReturnToHome);
+        
+        // if (gameButton != null)
+        //     gameButton.onClick.RemoveListener(GoToGameScene);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Music")
+        {
+            // 音楽プレイヤーシーンに戻ってきたらUIを再初期化
+            InitializeUI();
+        }
+        else if (scene.name != "Home" && scene.name != "insta")
+        {
+            // "Home"と"Game"以外のシーンに遷移したらAudioPlayerを破棄
+            DestroyAudioPlayer();
+        }
+    }
+
+     void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void InitializeUI()
+    {
+        // ボタンやUI要素を再取得（シーンが変わると参照が失われるため）
+        playPauseButton = GameObject.Find("PlayPauseButton")?.GetComponent<Button>();
+        nextTrackButton = GameObject.Find("NextButton")?.GetComponent<Button>();
+        previousTrackButton = GameObject.Find("BackButton")?.GetComponent<Button>();
+        returnHomeButton = GameObject.Find("HomeButton")?.GetComponent<Button>();
+        // gameButton = GameObject.Find("GameButton")?.GetComponent<Button>();
+
+        playIcon = GameObject.Find("PlayIcon");
+        pauseIcon = GameObject.Find("PauseIcon");
+        record = GameObject.Find("Record");
+        musicNameText = GameObject.Find("MusicNameText")?.GetComponent<TextMeshProUGUI>();
+
+
+        if (playPauseButton != null)
+            playPauseButton.onClick.AddListener(PlayPause);
+
+        if (nextTrackButton != null)
+            nextTrackButton.onClick.AddListener(NextTrack);
+
+        if (previousTrackButton != null)
+            previousTrackButton.onClick.AddListener(PreviousTrack);
+
+        if (returnHomeButton != null)
+            returnHomeButton.onClick.AddListener(ReturnToHome);
+        
+        // if (gameButton != null)
+        //     gameButton.onClick.RemoveListener(GoToGameScene);
+
+        // ボタンのアイコンを更新
+        UpdatePlayPauseIcon();
+    }
+
+    void DestroyAudioPlayer()
+    {
+        // 音楽を停止し、AudioPlayerを破棄
+        StopAllCoroutines();
+        if (audioSources != null)
+        {
+            foreach (var audio in audioSources)
+            {
+                audio.Stop();
+            }
+        }
+        Destroy(gameObject);
     }
 
 
@@ -229,5 +317,10 @@ public class MusicManager : MonoBehaviour
     public void ReturnToHome()
     {
         SceneManager.LoadScene("Home"); // "Home"はHomeシーンの名前です
+    }
+
+    public void GoToGameScene()
+    {
+        SceneManager.LoadScene("insta"); // "Game"は遷移先のシーン名
     }
 }

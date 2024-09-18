@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thum_music_0: -6418777269568185960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
