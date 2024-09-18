@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spaceana_0: -5575465028810163038
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
