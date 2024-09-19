@@ -150,6 +150,7 @@ public class BaseSceneManager_insta : MonoBehaviour
         BackGroundImage.SetActive(false);
         Player.SetActive(false);
         DeflectionCountText.gameObject.SetActive(false);
+        BestRecordText.gameObject.SetActive(false);
 
         string recordKey = "BestCount_" + SceneManager.GetActiveScene().name;
         string recordText = "SCORE:" + deflectionCount.ToString();

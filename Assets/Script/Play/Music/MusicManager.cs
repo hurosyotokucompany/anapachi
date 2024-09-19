@@ -41,6 +41,7 @@ public class MusicManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // このゲームオブジェクトをシーン遷移後も保持
+            audioSources = new List<AudioSource>(GetComponentsInChildren<AudioSource>(true));
         }
         else
         {
@@ -52,7 +53,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {   
         // このオブジェクトの子オブジェクトにあるすべてのAudioSourceを取得
-        audioSources = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
+        // audioSources = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
 
         // トラックをシャッフル
         ShuffleTracks();
