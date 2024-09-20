@@ -7,7 +7,7 @@ public class HomeRecordController : MonoBehaviour
     private MusicManager musicManager;
 
     // レコードの回転速度
-    private float rotationSpeed = 50f;
+    private float rotationSpeed = -50f;
 
     void Start()
     {

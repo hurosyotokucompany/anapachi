@@ -22,7 +22,7 @@ public class MusicManager : MonoBehaviour
      // レコードの回転用
     [SerializeField] private GameObject record;
     // レコードの回転速度
-    private float rotationSpeed = 50f;
+    private float rotationSpeed = -50f;
 
     // 再生中の曲名を表示するTextMeshProUGUI
     [SerializeField] private TextMeshProUGUI musicNameText;
